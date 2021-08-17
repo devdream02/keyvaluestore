@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: keyvaluestore-service
+  kafka:
+    producer:
+      bootstrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+
+server:
+  port: 8080
+  servlet:
+    context-path: /keyvalue-service
+
+devdream02:
+  base_uri: localhost:8080
+
+management:
+  endpoint:
+    actuator:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
